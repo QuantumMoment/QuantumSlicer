@@ -1,7 +1,7 @@
 
 (function( pathGenerator, $, undefined ) { 
 
-    //private properties
+  
     var grid_colors = ['transparent','blue', 'yellow','orange', 'red', '#980000', '#800000', 'black'];
     var grid_values = [];
     var visualize = false;
