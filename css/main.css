@@ -1,0 +1,63 @@
+body {
+    color: #000;
+    font-family:Monospace;
+    font-size:13px;
+    text-align:center;
+    font-weight: bold;
+
+    background-color: #fff;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#info {
+    color:#000;
+    position: absolute;
+    top: 50px; width: 100%;
+    padding: 5px;
+
+}
+
+a {
+    color: red;
+}
+
+#container{
+    height: 100vh;
+}
+.half_window{
+    width: 50vw;
+    height: 100vh;
+    position: relative;
+    background: #cccccc;
+    
+}
+
+#canvas {
+    width: 100%;
+    height: 600px;
+}
+
+
+
+
+#pathgenviewer{
+    width: 100vw;
+    height:100vh;
+    background-color: #cccccc;
+}
+
+.progress {
+    margin: 0;
+    margin-top: 60px;
+        background-color: #cccccc;
+}
+ .progress .progress-bar {
+                margin: 0;
+                padding: 0;
+                -webkit-transition: none;
+                -moz-transition: none;
+                -ms-transition: none;
+                -o-transition: none;
+                transition: none;
+}

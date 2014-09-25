@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Slicer Prototype</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+          <link href="css/bootstrap.min.css" rel="stylesheet">
+          <link href="css/main.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+       
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Path Generator</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#"  data-toggle="modal" data-target="#myModal">Path</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" >Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div> 
+        <div class="half_window" style="float: left">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                  0%
+              </div>
+            </div>
+
+            <canvas id="pathgenviewer"></canvas>
+        </div>
+        
+		<div class="half_window" style="float: right">
+            <div id="container"></div>
+            <div id="info">
+                <a href="http://p2am2.research.mcgill.ca/Welcome.html" target="_blank">P<sup>2</sup>(AM)<sup>2</sup></a> - Slicer Protoype
+                <a id="sliceButton"type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal2">Slice</a>
+                <a id="dowanloadButton"type="button" class="btn btn-primary btn-sm"  onClick="app.download_gcode()">Download G-code</a>
+            </div>
+        </div>
+        
+        
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/clipper.js"></script>
+		<script src="js/three.min.js"></script>
+        <script src="fonts/helvetiker_bold.typeface.js"></script>
+		<script src="fonts/helvetiker_regular.typeface.js"></script>
+		<script src="js/OrbitControls.js"></script>
+        <script src="js/slicer.js"></script>
+        <script src="js/skinner.js"></script>
+        <script src="js/render.js"></script>
+        <script src="js/fillPathGen.js"></script>
+        <script src="js/app.js"></script>
+        
+        
+        
+        <script>
+    
+        
+        </script>
+     
+       
+
+	</body>
+</html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Settings</h4>
+      </div>
+      <div class="modal-body">
+          
+       <form role="form" class="form-horizontal" NAME="test">
+         <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">CR</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="cr" placeholder="Enter cooling rate" value="2">
+            </div>
+        </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Spread</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="spread" placeholder="Enter spread" value="4">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Grid Size</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="grid_size" placeholder="Enter grid with" value="15">
+            </div>
+          </div>
+<!--
+                       <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Hatching speed:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="speed" placeholder="Enter speed in mm/s">
+            </div>
+          </div>
+
+                       <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Rotation angle between layers:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="angle" placeholder="Enter angle in degrees">
+            </div>
+          </div>-->
+        <div class="checkbox">
+            <div class="col-sm-4 control-label"></div>
+            <label>
+                  <div class="col-sm-8">
+              <input type="checkbox" NAME="animate"> <p>Animate</p>
+                      </div>
+            </label>
+          </div>
+       
+              
+              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="app.generatePathForm(this.form)">Generate!</button>
+      </div>
+           </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Settings</h4>
+      </div>
+      <div class="modal-body">
+          
+       <form role="form" class="form-horizontal" NAME="test">
+        
+           <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Layer Height</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="layer_height" placeholder="layer_height" value="1.5">
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Grid Scale</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputEmail1" NAME="grid_scale" placeholder="grid_scale" value="0.1">
+            </div>
+          </div>
+           
+ 
+            <div class="form-group">
+                 <label for="inputPassword3" class="col-sm-2 control-label">Model</label>
+                    <div class="col-sm-10">
+                       <select class="form-control" d="exampleInputEmail1" NAME="model_type" placeholder="model_type" >
+                          <option value="1">Sphere</option>
+                          <option value="2">Icosahedron</option>
+                          <option value="3">Tetrahedron</option>
+                          <option value="4">Cube</option>
+                          <option value="5">Text</option>
+                          <option value="6">Cylinder</option>
+                        </select>
+                    </div>
+              </div>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+         <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="app.generateSliceForm(this.form)">Slice!</button>
+      </div>
+           </form>
+    </div>
+  </div>
+</div>
